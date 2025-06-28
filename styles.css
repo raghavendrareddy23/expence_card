@@ -1,0 +1,147 @@
+:root {
+    --bg: #f8e9dd;
+    --primary: #ec775f;
+    --highlight: #76b5bc;
+    --text: #382314;
+    --tooltip: #382314;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  main {
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .balance {
+    background: var(--primary);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .toggle {
+    width: 30px;
+    height: 15px;
+    border-radius: 50px;
+    background: #382314;
+    position: relative;
+  }
+  
+  .toggle::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    background: white;
+    border-radius: 50%;
+  }
+  
+  .spending {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+  }
+  
+  .spending-chart {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 150px;
+    margin-top: 1.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+  }
+  
+  .spending-chart__bar {
+    width: 30px;
+    background: var(--primary);
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .spending-chart__bar.active {
+    background: var(--highlight);
+  }
+  
+  .spending-chart__bar:hover {
+    opacity: 0.8;
+  }
+  
+  .spending-chart__bar::before {
+    content: attr(data-label);
+    position: absolute;
+    bottom: -20px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.75rem;
+  }
+  
+  .spending-chart__bar::after {
+    content: attr(data-amount);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 8px;
+    background: var(--tooltip);
+    color: white;
+    font-size: 0.75rem;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+    white-space: nowrap;
+  }
+  
+  .spending-chart__bar:hover::after {
+    opacity: 1;
+  }
+  
+  .summary {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .spending_total span {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  footer {
+    text-align: center;
+    font-size: 0.75rem;
+    margin-top: 2rem;
+  }
+  
+  @media (max-width: 600px) {
+    body {
+      padding: 1rem;
+    }
+  
+    .spending-chart {
+      height: 120px;
+    }
+  
+    .spending-chart__bar {
+      width: 20px;
+    }
+  }
+  
